@@ -1,4 +1,0 @@
-/sbin/ifconfig eth0 40.4.6.2 netmask 255.255.255.0 broadcast 40.4.6.255 up
-/sbin/ifconfig eth1 11.0.0.42 netmask 255.255.255.252 broadcast 11.0.0.43 up
-/etc/init.d/quagga start
-

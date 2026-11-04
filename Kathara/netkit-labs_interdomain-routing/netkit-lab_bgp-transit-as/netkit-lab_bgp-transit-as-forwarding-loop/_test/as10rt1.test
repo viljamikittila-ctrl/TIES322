@@ -1,8 +1,0 @@
-#!/bin/sh
-
-touch /hostlab/as10rt1.testdone
-
-sleep 3m
-
-halt
-
