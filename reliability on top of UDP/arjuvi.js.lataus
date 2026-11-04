@@ -1,0 +1,107 @@
+var eng = false;
+var url = window.location.pathname;
+var filename = url.substring(url.lastIndexOf('/')+1);
+if (filename === "") { filename = "index.html"; }
+var lastModified = new Date(document.lastModified);
+
+$(document).ready(function() { 
+	//console.log(window.location.href);
+	var page = window.location.href;
+	if ( page.indexOf('_eng') > -1 ) eng = true;
+	if (eng) {
+		$( "#vasen" ).load( "vasen_eng.html" );
+	}
+	else {
+		$( "#vasen" ).load( "vasen.html" );
+	}
+	$( "#oikea" ).load( "oikea.html" );
+	/*$.ajax({
+		url:page,
+		error: function() {
+			//file not exists
+			console.log('test');
+			$("#middle").html('This page does not exist (yet), contact <a href="http://users.jyu.fi/~arjuvi/">Ari Viinikainen</a> for the information you are looking for');
+		},
+		success:function(res,code,xhr) {
+			var html = $.parseHTML(res);
+			var middle = $(html).find('#middle').html();
+			$("#middle").html(middle);
+			//lastModified = new Date(xhr.getResponseHeader("Last-Modified"));
+		}
+	});*/
+	
+	setTimeout(function(){
+		var minuuttia = lastModified.getMinutes();
+		var minutes = minuuttia.toString();
+		if (minutes.length == 1) {
+			minutes = '0'+minutes;
+		}
+		if (eng) {
+			$("#lastM").html('Last updated ' + lastModified.getDate() + '.' + (1+lastModified.getMonth()) + '.' + lastModified.getFullYear() + ' at ' + (lastModified.getHours()) + ':' + minutes +  '.');
+		}
+		else {
+		//$("#lastM").html('Viimeksi päivitetty ' + lastModified.getDate() + '.' + (1+lastModified.getMonth()) + '.' + lastModified.getFullYear() + ' klo ' + (1+lastModified.getHours()) + ':' + minutes +  '.'); // +1 kesäaikana :P
+			$("#lastM").html('Viimeksi päivitetty ' + lastModified.getDate() + '.' + (1+lastModified.getMonth()) + '.' + lastModified.getFullYear() + ' klo ' + (lastModified.getHours()) + ':' + minutes +  '.');
+		}
+	},1000);
+	$( "#ylacontainer" ).load( "http://users.jyu.fi/~arjuvi/opetus/ylacontainer.html", function(){
+		//$("#index_eng").replaceWith('<a href="javascript:load_eng_page("index_eng.html");">In English</a>');
+		if ( location.pathname.indexOf('ties322') > -1 ) {
+			$("#li-ties322").replaceWith('<li class="valittu"><a href="http://users.jyu.fi/~arjuvi/opetus/ties322/index.html">TIES322 Tietoliikenneprotokollat 2</a></li>');
+		}
+		else if ( location.pathname.indexOf('ties323') > -1 ) {
+			$( "#ohje" ).load( "http://users.jyu.fi/~arjuvi/opetus/tiesohjeet.html" );
+			$("#li-ties323").replaceWith('<li class="valittu"><a href="http://users.jyu.fi/~arjuvi/opetus/ties323/index.html">TIES323 Sovellusprotokollat</a></li>');
+		}
+		else if ( location.pathname.indexOf('itkp104') > -1 ) {
+			$("#li-itkp104").replaceWith('<li class="valittu"><a href="http://users.jyu.fi/~arjuvi/opetus/itkp104/index.html">ITKP104 Tietoverkot</a></li>');
+		}
+		else if ( location.pathname.indexOf('tiep114') > -1 ) {
+			$("#li-tiep114").replaceWith('<li class="valittu"><a href="http://users.jyu.fi/~arjuvi/opetus/tiep114/index.html">TIEP114 Tietokoneen rakenne ja arkkitehtuuri</a></li>');
+		}
+		else if ( location.pathname.indexOf('tiea322') > -1 ) {
+			$("#li-tiea322").replaceWith('<li class="valittu"><a href="http://users.jyu.fi/~arjuvi/opetus/tiea322/index.html">TIEA322 Tietoliikenneprotokollat</a></li>');
+		}
+		else if ( location.pathname.indexOf('ties529') > -1 ) {
+			$("#li-ties529").replaceWith('<li class="valittu"><a href="http://users.jyu.fi/~arjuvi/opetus/ties529/index.html">TIES529 Mobiilijärjestelmien laboratoriotyöt</a></li>');
+		}
+		if (eng) {
+			$("#index_eng").replaceWith('<li><a href="index.html">Suomeksi</a></li>');
+		}
+	});
+});
+/*
+$(window).on("popstate", function(e) {
+    if (e.originalEvent.state !== null) {
+		if (eng) {
+			load_eng_page(location.href);
+		}
+		load_page(location.href);
+	}
+});
+*/
+function unhide(divID) {
+	var item = document.getElementById(divID);
+	if (item) {
+		item.className=(item.className=='hidden')?'unhidden':'hidden';
+	}
+}
+
+/*
+function load_eng_page(page){
+	eng = true;
+	$("#index_eng").replaceWith('<li><a href="index.html">Suomeksi</a></li>');
+	var res = filename.split('.');
+	//history.pushState({id: 'SOME ID'}, '', res[0] + "_eng.html");
+	history.pushState({id: 'SOME ID'}, '', page);
+	$.ajax({
+		url:page,
+		error: function() {
+			//file not exists
+			$("#middle").html('English version of page does not exist (yet), contact <a href="http://users.jyu.fi/~arjuvi/">Ari Viinikainen</a> for the information you are looking for');
+		},
+		success:function(res,code,xhr) {
+			$("#middle").html(res);
+		}
+	})
+}*/

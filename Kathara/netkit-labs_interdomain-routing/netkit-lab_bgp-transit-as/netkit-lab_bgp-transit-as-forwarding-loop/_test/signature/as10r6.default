@@ -1,0 +1,62 @@
+[INTERFACES]
+
+eth0      Link encap:Ethernet  HWaddr 66:d8:40:68:52:fc  
+          inet addr:10.0.0.9  Bcast:10.0.0.11  Mask:255.255.255.252
+          inet6 addr: fe80::64d8:40ff:fe68:52fc/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+
+eth1      Link encap:Ethernet  HWaddr 0a:cd:18:1b:6d:61  
+          inet addr:10.0.0.6  Bcast:10.0.0.7  Mask:255.255.255.252
+          inet6 addr: fe80::8cd:18ff:fe1b:6d61/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+
+eth2      Link encap:Ethernet  HWaddr 4e:e5:05:3d:17:b1  
+          inet addr:11.0.0.9  Bcast:11.0.0.11  Mask:255.255.255.252
+          inet6 addr: fe80::4ce5:5ff:fe3d:17b1/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+
+
+[ROUTE]
+
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+10.0.0.4        *               255.255.255.252 U         0 0          0 eth1
+10.0.0.8        *               255.255.255.252 U         0 0          0 eth0
+11.0.0.8        *               255.255.255.252 U         0 0          0 eth2
+
+[LISTENING PORTS]
+
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:2601            0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:2602            0.0.0.0:*               LISTEN     
+udp        0      0 0.0.0.0:520             0.0.0.0:*                          
+
+[PROCESSES]
+
+  UID COMMAND
+    0 init [2]       
+    0 [kthreadd]
+    0 [ksoftirqd/0]
+    0 [events/0]
+    0 [khelper]
+    0 [kblockd/0]
+    0 [pdflush]
+    0 [pdflush]
+    0 [kswapd0]
+    0 [aio/0]
+    0 [cifsoplockd]
+    0 [cifsdnotifyd]
+    0 /bin/sh /etc/init.d/rc 2
+    0 /sbin/syslogd
+    0 /sbin/klogd -x
+    0 /bin/bash /etc/rc2.d/S99netkit-phase2 start
+    0 /usr/lib/quagga/zebra --daemon -A 0.0.0.0
+    0 /usr/lib/quagga/ripd --daemon -A 0.0.0.0
+    0 /bin/bash /etc/init.d/netkit-test-phase
+    0 /bin/ps -e -o uid,command

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+sleep 2m
+
+# Get some routing information
+route -n | grep ^[0-9] | awk '{print $1, $2}' | sort -n
+
+ip tunnel show r2r3
+traceroute -s 12.0.0.1 12.0.0.6 2>/dev/null | awk '{print $1,$2,$3}'
+
+touch /hostlab/as10rt2.testdone
+
+sleep 1m
+
+halt
+

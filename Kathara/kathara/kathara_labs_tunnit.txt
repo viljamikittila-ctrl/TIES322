@@ -1,0 +1,51 @@
+05.10 Aika 14:30 - 18:00 = 3,5h
+
+main-labs/basic-topics/two-hosts
+
+main-labs/basic-topics/two-computers
+
+main-labs/basic-topics/static-routing
+
+06.10 Aika 12:30 - 15:30 = 3h
+
+Suoritettu
+
+main-labs/basic-topics/arp
+
+main-labs/basic-topics/basic-ipv4
+
+main-labs/basic-topics/basic-ipv6
+
+07.10 11:30 - 13:00 = 1,5h
+
+main-labs/basic-topics/subnetting IPv4
+
+08.10 08:00 - 13:00, 5h
+
+main-labs/application-level/load-balancer-random
+main-labs/application-level/dns
+main-labs/application-level/http-tcp
+main-labs/switching/one-bridge
+main-labs/intradomain-routing/guagga/guagga-introduction
+main-labs/intradomain-routing/guagga/rip
+
+09.10 06:00 - 12:00 = 6h 
+main-labs/intradomain-routing/guagga/ospf
+main-labs/interdomain-routing/quagga/bgp-simple-peering/
+main-labs/interdomain-routing/frr/bgp-announcement/
+main-labs/interdomain-routing/frr/bgp-prefix-filtering
+main-labs/interdomain-routing/frr/bgp-stub-as
+
+09.10 15:00 - 16:00 = 1h
+main-labs/interdomain-routing/frr/bgp-stub-as-static
+main-labs/interdomain-routing/frr/bgp-multi-homed-stub
+
+10.10 10:00 - 13:00 = 3h
+main-labs/interdomain-routing/frr/bgp-multi-homed-stub-large
+main-labs/interdomain-routing/frr/bgp-multi-homed
+
+12.10 9:00 - 13:00 = 4h
+main-labs/data-center-routing/data-center-architecture
+main-labs/data-center-routing/data-center-bgp
+
+Yht = 27h

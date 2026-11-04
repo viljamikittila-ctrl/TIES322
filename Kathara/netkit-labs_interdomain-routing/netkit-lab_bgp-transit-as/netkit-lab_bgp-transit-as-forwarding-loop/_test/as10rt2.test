@@ -1,0 +1,13 @@
+#!/bin/sh
+
+sleep 2m
+
+# Get some routing information
+route -n | grep ^[0-9] | awk '{print $1, $2}' | sort -n
+
+touch /hostlab/as10rt2.testdone
+
+sleep 1m
+
+halt
+

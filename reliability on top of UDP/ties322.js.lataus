@@ -1,0 +1,126 @@
+var associativeArray = {};
+associativeArray['id1'] = 'https://m3.jyu.fi/jyumv/embed?uid=6f4fec0cb740454882fe91e32782667e';
+associativeArray['id2'] = 'https://m3.jyu.fi/jyumv/embed?uid=6dd63de77a4a42d29104dc34446fb9bf';
+associativeArray['id3'] = 'https://m3.jyu.fi/jyumv/embed?uid=7d9970e895f14a5e8c5b3d9025bb91bd';
+associativeArray['id4'] = 'https://m3.jyu.fi/jyumv/embed?uid=8b724740bc484de39844e43762263363';
+associativeArray['id5'] = 'https://m3.jyu.fi/jyumv/embed?uid=17e9f9f9d51e4a94b9bd8784f01c8506';
+associativeArray['id6'] = 'https://m3.jyu.fi/jyumv/embed?uid=67851335eb3144c498a33cf2da90f50d';
+
+var currentId = 'id1';
+
+function unhide(divID) {
+	var item = document.getElementById(divID);
+	if (item) {
+		item.className=(item.className=='hidden')?'unhidden':'hidden';
+	}
+}
+function showVideo(videoid,id) {
+	currentId = id;
+	document.getElementById(videoid).src=associativeArray[id];
+	var item = document.getElementById('www' + videoid);
+	if (item.className=='hidden') {
+		unhide('www' + videoid);
+	}
+}
+
+function nextVideo(videoid) {
+	var number = videoid.substring(videoid.length-1, videoid.length);
+	var tempInt = parseInt(currentId.substring(2, currentId.length));
+/*	if (tempInt >= associativeArray.length) { 
+		alert('Se oli viimeinen video. Lisää videoita tulee myöhemmin...');
+	}*/
+	if (number == 1 && tempInt < 8) {
+		tempInt += 1;
+		currentId = 'id' + tempInt.toString();
+		showVideo(videoid, currentId);
+	}
+	/*else if (number == 2 && tempInt < 13) {
+		tempInt += 1;
+		currentId = 'id' + tempInt.toString();
+		showVideo(videoid, currentId);
+	}
+	else if (number == 3 && tempInt < 19) {
+		tempInt += 1;
+		currentId = 'id' + tempInt.toString();
+		showVideo(videoid, currentId);
+	}
+	else if (number == 4 && tempInt < 24) {
+		tempInt += 1;
+		currentId = 'id' + tempInt.toString();
+		showVideo(videoid, currentId);
+	}
+	else if (number == 5 && tempInt < 27) {
+		tempInt += 1;
+		currentId = 'id' + tempInt.toString();
+		showVideo(videoid, currentId);
+	}*/
+}
+
+function prevVideo(videoid) {
+	var number = videoid.substring(videoid.length-1, videoid.length);
+	var tempInt = parseInt(currentId.substring(2, currentId.length));
+	/*if (tempInt < 1) { 
+		alert('Se oli osion ' + number + ' ensimmäinen video.  Lisää videoita tulee myöhemmin...');
+	}*/
+	if (number == 1 && tempInt > 1) {
+		tempInt -= 1;
+		currentId = 'id' + tempInt.toString();
+		showVideo(videoid, currentId);
+	}
+	/*else if (number == 2 && tempInt > 9) {
+		tempInt -= 1;
+		currentId = 'id' + tempInt.toString();
+		showVideo(videoid, currentId);
+	}
+	else if (number == 3 && tempInt > 14) {
+		tempInt -= 1;
+		currentId = 'id' + tempInt.toString();
+		showVideo(videoid, currentId);
+	}
+	else if (number == 4 && tempInt > 20) {
+		tempInt -= 1;
+		currentId = 'id' + tempInt.toString();
+		showVideo(videoid, currentId);
+	}
+	else if (number == 5 && tempInt > 25) {
+		tempInt -= 1;
+		currentId = 'id' + tempInt.toString();
+		showVideo(videoid, currentId);
+	}*/
+}
+
+function changeSize(id) {
+	var number = id.substring(id.length-1, id.length);
+	var newwidth = 640;
+	var newheight = 400;
+	if (document.getElementById(id).value == "s300"){
+		newwidth = 300;
+		newheight = 200;
+	}
+	else if (document.getElementById(id).value == "s640"){
+		newwidth = 640;
+		newheight = 400;
+	}
+	else if (document.getElementById(id).value == "s800"){
+		newwidth = 800;
+		newheight = 500;
+	}
+	else if (document.getElementById(id).value == "s960"){
+		newwidth = 960;
+		newheight = 600;
+	}
+	else if (document.getElementById(id).value == "s1024"){
+		newwidth = 1024;
+		newheight = 650;
+	}
+	else if (document.getElementById(id).value == "s1280"){
+		newwidth = 1280;
+		newheight = 800;
+	}
+	else if (document.getElementById(id).value == "s1680"){
+		newwidth = 1680;
+		newheight = 1050;
+	}
+	document.getElementById('Video' + number).width= (newwidth) + "px";
+	document.getElementById('Video' + number).height= (newheight) + "px";
+}
